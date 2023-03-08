@@ -85,3 +85,23 @@ if(p!=NULL)
 //
 四.指针运算（指针+-整数、指针-指针、指针的关系运算）
 i).指针+-整数
+int main()
+{
+	int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+	int* p = arr;
+	int* pend  arr + 9;
+	while(p < pend)
+	{
+		printf("%d\n",*p);
+		p++;
+	}
+	return 0;
+}
+ii)指针-指针
+得到的是两个指针之间的元素个数
+int main()
+{
+	int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+	printf("%d",&arr[9] - &arr[0]);
+	return 0;
+}
