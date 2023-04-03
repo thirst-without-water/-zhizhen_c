@@ -87,21 +87,54 @@ if(p!=NULL)
 i).指针+-整数
 int main()
 {
-	int arr[10] = {1,2,3,4,5,6,7,8,9,10};
-	int* p = arr;
-	int* pend  arr + 9;
-	while(p < pend)
+	int arr[10]={0};
+	int i = 0;
+	int sz = sizeof(arr)/sizeof(arr[0]);
+
+1.//	for(i=0;i<sZ;i++)
+//	{
+//		arr[i] = 1;
+//	}
+
+2.//	int *p =arr;
+//	for(i=0;i<sz:i++)
+//	{
+//		*p=1;
+//		p++;
+//	}
+
+	int *p = arr;
+	for(i=0;i<sz;i++)
 	{
-		printf("%d\n",*p);
-		p++;
+		*(p+i) = 1;
 	}
 	return 0;
 }
 ii)指针-指针
-得到的是两个指针之间的元素个数
+绝对值得到的是两个指针之间的元素个数
+不是所有的指针都能相减：指向同一块空间的两个指针才能相减
+指针+指针？地址+地址？莫法
 int main()
 {
-	int arr[10] = {1,2,3,4,5,6,7,8,9,10};
-	printf("%d",&arr[9] - &arr[0]);
+	int arr[10] = {0};
+	printf("%d",&arr[9] - &arr[0]);             /*结果为9*/
 	return 0;
 }
+应用： 
+int my_strlen(char *str)
+{
+	char *start = str;
+	while(*str != '\0')
+	{
+		str++;
+	}
+	return(str-start);
+}
+int main()
+{
+	int len = my_strlen("abcdef");   /*a b c d e f \0*/
+	printf("%d\n",len);              /*结果为6*/
+	return 0;
+}
+iii)指针的关系运算（比较大小）
+允许指向数组元素的指针与指向数组最后一个元素后面的那个内存位置的指针比较，但是不允许与指向第一个元素之前的那个内存位置的指针进行比较,
