@@ -137,4 +137,60 @@ int main()
 	return 0;
 }
 iii)指针的关系运算（比较大小）
-允许指向数组元素的指针与指向数组最后一个元素后面的那个内存位置的指针比较，但是不允许与指向第一个元素之前的那个内存位置的指针进行比较,
+允许指向数组元素的指针与指向数组最后一个元素后面的那个内存位置的指针比较，但是不允许与指向第一个元素之前的那个内存位置的指针进行比较
+//
+//
+五.指针和数组
+数组:一组相同类型元素的集合
+指针变量:是一个变量，存放的是地址
+int main()
+{
+	int arr[10] = {0};
+	//arr是首元素的地址——&arr[0]
+	int* p = arr;
+	//通过指针来访问数组
+	int sz=sizeof(arr)/sizeof(arr[0]);
+	int i = 0;
+	for(i=0;i<sz;i++)
+	{
+		printf("%p-----%p\n",&arr[i],p+i);
+	}
+	return 0;
+}
+
+1.
+void test(int* p, int sz)
+{
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d "，*(p+ i));
+	}
+}
+2.
+void test(int arr[]，int sz)
+{
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);     //arr[i]-->*(arr+i)
+	}
+}
+int main()
+{
+	int arr[10] = {0};
+	test(arr，10);
+	return 0;
+}
+//
+//
+六.二级指针
+int main()
+{
+	int a = 10;
+	int *pa = &a;  //pa是一个指针变量，一级指针变量
+	&pa;
+	*pa = 20;
+	printf("%d\n",a);    /*结果为20*/
+	return 0;
+}
