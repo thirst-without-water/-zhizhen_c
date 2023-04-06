@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
 A.主要内容：指针
 **指针是什么、指针和指针类型、野指针、指针运算、指针和数组、二级指针和指针数组
@@ -29,8 +28,8 @@ ii）指针类型决定了，指针走一步，能走多远(步长)
 int main()
 {
 	int arr[10] = {0};
-	int *p = arr;
-	char *pc = arr;
+	int* p = arr;
+	char* pc = arr;
 	printf("%p\n",p);
 	printf("%p\n",p+1);          /*加了4*/
 	
@@ -45,7 +44,7 @@ int main()
 i)指针未初始化
 int main()
 {
-	int *p;                     /*p是一个局部的指针变量，局部变量不初始化的话，默认是随机值*/
+	int* p;                     /*p是一个局部的指针变量，局部变量不初始化的话，默认是随机值*/
 	*p=20;                      /*非法访问内存了*/
 	return 0;
 }
@@ -53,7 +52,7 @@ ii)指针越界访问
 int main()
 {
 	int arr[10] = {0};
-	int *p = arr;
+	int* p = arr;
 	int i = 0;
 	for(i = 0;i <= 10; i++)
 	{
@@ -70,7 +69,7 @@ int* test()
 }
 int main()
 {
-	int*p = test():
+	int* p = test():
 	*p = 20;
 	return 0;
 }
@@ -96,14 +95,14 @@ int main()
 //		arr[i] = 1;
 //	}
 
-2.//	int *p =arr;
+2.//	int* p =arr;
 //	for(i=0;i<sz:i++)
 //	{
 //		*p=1;
 //		p++;
 //	}
 
-	int *p = arr;
+	int* p = arr;
 	for(i=0;i<sz;i++)
 	{
 		*(p+i) = 1;
@@ -121,9 +120,9 @@ int main()
 	return 0;
 }
 应用： 
-int my_strlen(char *str)
+int my_strlen(char* str)
 {
-	char *start = str;
+	char* start = str;
 	while(*str != '\0')
 	{
 		str++;
@@ -188,9 +187,37 @@ int main()
 int main()
 {
 	int a = 10;
-	int *pa = &a;  //pa是一个指针变量，一级指针变量
-	&pa;
-	*pa = 20;
+	int* pa = &a;  //pa是一个指针变量，一级指针变量
+	int** ppa=&pa; //ppa是一个二级指针变量
+	**ppa=20;
+	//&pa;
+	//*pa = 20;
 	printf("%d\n",a);    /*结果为20*/
 	return 0;
 }
+二级指针变量是用来存放一级指针变量的地址
+//
+//
+七.指针数组
+存放指针的数组就是指针数组
+int main()
+{
+	int a = 10;
+	int b = 20;
+	int c = 30;
+	int arr[10];
+	
+	int* pa = &a;
+	int* pb = &b;
+	int* pc = &c;
+	int* parr[10]={&a,&b,&c}; /* parr就是存放指针的数组*/
+	int i = 0;
+	for(i=0;i<3;i++)
+	{
+		printf("%d ",*(parr[i]));
+	}
+	return 0;
+	
+}
+B.练习
+1.
